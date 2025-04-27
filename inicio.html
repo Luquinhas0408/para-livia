@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Meu Amor Lívia</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #6a0dad, #1e90ff); /* Roxo para azul */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 1;
+        }
+
+        .botao-coracao {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 3em;
+            color: white;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .botao-coracao:hover {
+            transform: scale(1.2);
+        }
+
+        /* Corações caindo */
+        .coracao {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            animation: cair linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes cair {
+            0% {
+                transform: translateY(-60px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Para Meu Amor Lívia</h1>
+
+    <form action="mensagem.html">
+        <button type="submit" class="botao-coracao">❤️</button>
+    </form>
+
+    <script>
+        function criarCoracao() {
+            const coracao = document.createElement('div');
+            coracao.classList.add('coracao');
+            coracao.style.left = Math.random() * 100 + "vw";
+            coracao.style.animationDuration = (Math.random() * 3 + 2) + "s"; // Duração entre 2s e 5s
+            coracao.style.fontSize = (Math.random() * 20 + 20) + "px"; // Tamanho aleatório
+
+            coracao.innerHTML = "❤️";
+            document.body.appendChild(coracao);
+
+            setTimeout(() => {
+                coracao.remove();
+            }, 5000);
+        }
+
+        setInterval(criarCoracao, 300);
+    </script>
+
+</body>
+</html>
